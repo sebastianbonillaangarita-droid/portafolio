@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastián Bonilla Angarita | Portafolio Creativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0a0a0c',
+                        card: '#13131a',
+                        accent: '#a855f7',
+                        accentPink: '#ec4899',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+        }
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(10,10,12,0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glass-nav {
+            background: rgba(19, 19, 26, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+            transition: all 0.3s ease;
+        }
+        .outline-text:hover {
+            -webkit-text-stroke: 1px #a855f7;
+            color: #a855f7;
+        }
+        .project-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-purple-500 selection:text-white">
+
+    <!-- Glowing Background Orbs -->
+    <div class="glow-effect top-20 left-10"></div>
+    <div class="glow-effect top-1/3 right-10"></div>
+    <div class="glow-effect bottom-1/4 left-1/3"></div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto glass-nav rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+            <a href="#" class="font-extrabold text-xl tracking-wider bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                SEBASTIÁN.
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-purple-400 transition">ABOUT</a>
+                <a href="#services" class="hover:text-purple-400 transition">SERVICES</a>
+                <a href="#projects" class="hover:text-purple-400 transition">PROJECTS</a>
+                <a href="#testimonials" class="hover:text-purple-400 transition">TESTIMONIALS</a>
+            </nav>
+            <a href="#contact" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition shadow-lg shadow-purple-500/25 flex items-center gap-2">
+                <span>CONTACT ME</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 relative text-center">
+        <div class="max-w-4xl mx-auto z-10">
+            <h1 class="text-5xl md:text-8xl font-black tracking-tight mb-6 uppercase">
+                HI, I'M <span class="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent">SEBASTIÁN</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                Comunicador social apasionado por la producción audiovisual, diseño gráfico, branding y la creación de experiencias sonoras inolvidables.
+            </p>
+            
+            <!-- Avatar / 3D Vibe Element -->
+            <div class="relative w-48 h-48 md:w-60 md:h-60 mx-auto mb-10 rounded-full p-1 bg-gradient-to-tr from-purple-500 to-pink-500 shadow-2xl shadow-purple-500/30 overflow-hidden group">
+                <div class="w-full h-full rounded-full overflow-hidden bg-card flex items-center justify-center relative">
+                    <!-- Placeholder avatar styling representing professional creative photo -->
+                    <div class="absolute inset-0 bg-cover bg-center filter contrast-125 opacity-90 group-hover:scale-105 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent"></div>
+                </div>
+            </div>
+
+            <!-- Client Logos / Badges -->
+            <div class="pt-10 border-t border-white/10 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+                <span class="text-sm font-semibold tracking-widest text-gray-400 flex items-center gap-2"><i class="fa-solid fa-microphone text-purple-400"></i> HÁBLAME DE ARTE</span>
+                <span class="text-sm font-semibold tracking-widest text-gray-400 flex items-center gap-2"><i class="fa-solid fa-headphones text-pink-400"></i> SAWBEAT</span>
+                <span class="text-sm font-semibold tracking-widest text-gray-400 flex items-center gap-2"><i class="fa-solid fa-clapperboard text-purple-400"></i> COLEGIO LA PRESENTACIÓN</span>
+                <span class="text-sm font-semibold tracking-widest text-gray-400 flex items-center gap-2"><i class="fa-solid fa-palette text-pink-400"></i> MOIRAS CULTURAL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative bg-card/40 border-y border-white/5">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tight">
+                    ABOUT <span class="outline-text">ME</span>
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
+                    Con más de 5 años de experiencia en comunicación digital, producción de contenidos multimedia y diseño. Me especializo en branding, storytelling visual y producción sonora que hacen destacar a marcas y proyectos.
+                </p>
+                <p class="text-gray-400 mb-8 font-light">
+                    Transformo ideas complejas en narrativas visuales atractivas y de alto impacto. ¡Creemos algo increíble juntos!
+                </p>
+                <a href="#contact" class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wider hover:opacity-90 transition shadow-lg shadow-purple-500/20">
+                    <span>CONTACT ME</span>
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <i class="fa-solid fa-video text-3xl text-purple-400 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-1">Audiovisual</h3>
+                    <p class="text-xs text-gray-400">Premiere, After Effects, CapCut, Producción TV</p>
+                </div>
+                <div class="bg-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <i class="fa-solid fa-pen-nib text-3xl text-pink-400 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-1">Diseño Gráfico</h3>
+                    <p class="text-xs text-gray-400">Illustrator, Photoshop, Lightroom, CorelDRAW</p>
+                </div>
+                <div class="bg-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <i class="fa-solid fa-music text-3xl text-purple-400 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-1">Sonido & DJ</h3>
+                    <p class="text-xs text-gray-400">Ableton Live, Audition, Serato DJ Pro</p>
+                </div>
+                <div class="bg-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <i class="fa-solid fa-bullhorn text-3xl text-pink-400 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-1">Estrategia</h3>
+                    <p class="text-xs text-gray-400">Branding, Redes Sociales, Storytelling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 max-w-5xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">
+            MY <span class="outline-text">SERVICES</span>
+        </h2>
+        <div class="space-y-6">
+            <div class="group bg-card/60 hover:bg-card border border-white/5 hover:border-purple-500/50 p-8 rounded-2xl transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-start gap-6">
+                    <span class="text-4xl font-black text-purple-400/50 group-hover:text-purple-400 transition">01</span>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Producción Audiovisual & Streaming</h3>
+                        <p class="text-gray-400 text-sm max-w-xl font-light">Creación y edición avanzada de contenidos para plataformas digitales, podcasts ("Háblame de Arte") y transmisiones en vivo profesionales.</p>
+                    </div>
+                </div>
+                <span class="text-xs font-semibold tracking-wider text-purple-400 bg-purple-500/10 px-4 py-2 rounded-full w-max">EXPLORAR</span>
+            </div>
+
+            <div class="group bg-card/60 hover:bg-card border border-white/5 hover:border-purple-500/50 p-8 rounded-2xl transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-start gap-6">
+                    <span class="text-4xl font-black text-purple-400/50 group-hover:text-purple-400 transition">02</span>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Diseño Gráfico & Identidad Visual</h3>
+                        <p class="text-gray-400 text-sm max-w-xl font-light">Desarrollo de branding corporativo, piezas gráficas institucionales, vectorización y diseño publicitario de alto impacto.</p>
+                    </div>
+                </div>
+                <span class="text-xs font-semibold tracking-wider text-purple-400 bg-purple-500/10 px-4 py-2 rounded-full w-max">EXPLORAR</span>
+            </div>
+
+            <div class="group bg-card/60 hover:bg-card border border-white/5 hover:border-purple-500/50 p-8 rounded-2xl transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-start gap-6">
+                    <span class="text-4xl font-black text-purple-400/50 group-hover:text-purple-400 transition">03</span>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Producción Musical & DJ Sets (SawBeat)</h3>
+                        <p class="text-gray-400 text-sm max-w-xl font-light">Composición de beats, ingeniería de sonido, mezcla en vivo con Ableton Live / Serato y diseño sonoro envolvente.</p>
+                    </div>
+                </div>
+                <span class="text-xs font-semibold tracking-wider text-purple-400 bg-purple-500/10 px-4 py-2 rounded-full w-max">EXPLORAR</span>
+            </div>
+
+            <div class="group bg-card/60 hover:bg-card border border-white/5 hover:border-purple-500/50 p-8 rounded-2xl transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-start gap-6">
+                    <span class="text-4xl font-black text-purple-400/50 group-hover:text-purple-400 transition">04</span>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Estrategia Digital & Comunicaciones</h3>
+                        <p class="text-gray-400 text-sm max-w-xl font-light">Gestión institucional, actualización de sitios web, manejo de redes sociales y planes de comunicación estratégica.</p>
+                    </div>
+                </div>
+                <span class="text-xs font-semibold tracking-wider text-purple-400 bg-purple-500/10 px-4 py-2 rounded-full w-max">EXPLORAR</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 bg-card/40 border-y border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">
+                FEATURED <span class="outline-text">PROJECTS</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-card rounded-2xl overflow-hidden border border-white/10 flex flex-col">
+                    <div class="h-56 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-dark/80 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full text-purple-400">01 / PODCAST</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Háblame de Arte</h3>
+                            <p class="text-gray-400 text-sm mb-4 font-light">Producción general, dirección audiovisual y entrevistas del podcast cultural y artístico.</p>
+                        </div>
+                        <a href="https://www.youtube.com/@Hablamedearte" target="_blank" class="inline-flex items-center justify-between text-xs font-bold text-purple-400 hover:text-purple-300 pt-4 border-t border-white/10">
+                            <span>LIVE PROJECT</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-card rounded-2xl overflow-hidden border border-white/10 flex flex-col">
+                    <div class="h-56 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-dark/80 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full text-pink-400">02 / MUSIC</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">SawBeat Productions</h3>
+                            <p class="text-gray-400 text-sm mb-4 font-light">Proyecto de beatmaking, producción musical electrónica y mezcla de sesiones en vivo.</p>
+                        </div>
+                        <a href="https://www.youtube.com/@sawbeat" target="_blank" class="inline-flex items-center justify-between text-xs font-bold text-pink-400 hover:text-pink-300 pt-4 border-t border-white/10">
+                            <span>LIVE PROJECT</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-card rounded-2xl overflow-hidden border border-white/10 flex flex-col">
+                    <div class="h-56 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=600&q=80')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-dark/80 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full text-purple-400">03 / INSTITUTIONAL</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Colegio La Presentación</h3>
+                            <p class="text-gray-400 text-sm mb-4 font-light">Administración IT, gestión de plataformas educativas y diseño gráfico para eventos institucionales.</p>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center justify-between text-xs font-bold text-purple-400 hover:text-purple-300 pt-4 border-t border-white/10">
+                            <span>DETAILS</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 px-6 max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">
+            WHAT CLIENTS <span class="outline-text">ARE SAYING</span> 🤩
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+                <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                    "Sebastián posee una creatividad excepcional. Su capacidad para transformar conceptos artísticos en piezas audiovisuales de gran calidad superó todas nuestras expectativas."
+                </p>
+                <div>
+                    <h4 class="font-bold text-sm">Estefania Orozco</h4>
+                    <span class="text-xs text-purple-400">Gestora Cultural Moiras</span>
+                </div>
+            </div>
+
+            <div class="bg-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+                <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                    "Su profesionalismo en la producción de sonido y el manejo técnico es indiscutible. Cada proyecto con él resulta impecable y con un sello único."
+                </p>
+                <div>
+                    <h4 class="font-bold text-sm">Brayam Gabriel Villamizar</h4>
+                    <span class="text-xs text-pink-400">Ingeniero Ambiental</span>
+                </div>
+            </div>
+
+            <div class="bg-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+                <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                    "Un comunicador polifacético con excelente manejo tecnológico y visual. Su aporte en el diseño y la estrategia digital es de gran valor."
+                </p>
+                <div>
+                    <h4 class="font-bold text-sm">Jaime Enrrique Anavitarte</h4>
+                    <span class="text-xs text-purple-400">Abogado e Ingeniero de Sistemas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-card/40 border-t border-white/5 relative">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tight">
+                    LET'S GET <span class="outline-text">IN TOUCH</span>
+                </h2>
+                <p class="text-gray-400 mb-8 font-light">
+                    ¿Tienes un proyecto en mente o necesitas elevar la identidad visual y sonora de tu marca? Escríbeme y hagámoslo realidad.
+                </p>
+                <div class="space-y-4 text-sm text-gray-300">
+                    <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-purple-400"></i> Sebastianbonillaangarita@gmail.com</p>
+                    <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-pink-400"></i> +57 323 208 4545</p>
+                    <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-purple-400"></i> Cúcuta, Colombia</p>
+                </div>
+            </div>
+
+            <div class="bg-card p-8 rounded-2xl border border-white/10">
+                <form onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Sebastián se pondrá en contacto contigo pronto.');" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Tu Nombre</label>
+                        <input type="text" required class="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition text-white" placeholder="Ej. Ana Pérez">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Tu Email</label>
+                        <input type="email" required class="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition text-white" placeholder="correo@ejemplo.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Mensaje</label>
+                        <textarea rows="4" required class="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition text-white resize-none" placeholder="Cuéntame sobre tu proyecto..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3.5 rounded-xl text-sm tracking-wider hover:opacity-90 transition shadow-lg shadow-purple-500/25">
+                        ENVIAR MENSAJE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5 text-center text-gray-500 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <span class="font-bold text-sm tracking-wider text-gray-300">SEBASTIÁN BONILLA ANGARITA</span>
+            <div class="flex space-x-6 text-lg">
+                <a href="https://www.instagram.com/sebastianba6" target="_blank" class="hover:text-purple-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Hablamedearte" target="_blank" class="hover:text-purple-400 transition"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.youtube.com/@sawbeat" target="_blank" class="hover:text-purple-400 transition"><i class="fa-brands fa-soundcloud"></i></a>
+            </div>
+            <p>© 2026 Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
