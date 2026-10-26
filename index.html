@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastian Bonilla Angarita | Comunicador Social & Creador Creativo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        
+        :root {
+            --bg-primary: #09090b;
+            --bg-secondary: #121216;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border-color: #27272a;
+            --card-bg: #121216;
+        }
+
+        html.light {
+            --bg-primary: #f4f4f5;
+            --bg-secondary: #ffffff;
+            --text-primary: #09090b;
+            --text-secondary: #52525b;
+            --border-color: #e4e4e7;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .custom-bg-primary { background-color: var(--bg-primary); }
+        .custom-bg-secondary { background-color: var(--bg-secondary); }
+        .custom-card-bg { background-color: var(--card-bg); }
+        .custom-text-primary { color: var(--text-primary); }
+        .custom-text-secondary { color: var(--text-secondary); }
+        .custom-border { border-color: var(--border-color); }
+
+        /* Estilo Neumorfismo / Glassmorphism para el interruptor de tema */
+        .glass-switch {
+            position: relative;
+            width: 68px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+            cursor: pointer;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4), 0 6px 16px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html.light .glass-switch {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-handle {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease;
+        }
+
+        html.light .glass-handle {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(220, 220, 225, 0.9));
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        html:not(.light) .glass-handle {
+            transform: translateX(32px);
+        }
+        
+        /* Estilo unificado de iconos flotantes en capas estilo WhatsApp */
+        .glass-icon-sm {
+            position: relative;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-icon-sm:hover {
+            transform: scale(1.12);
+        }
+
+        .glass-icon-sm .glass-sm-back {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            bottom: 2px;
+            right: 2px;
+            opacity: 0.85;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(6px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-icon-sm:hover .glass-sm-back {
+            bottom: 0px;
+            right: 0px;
+            opacity: 1;
+        }
+
+        .glass-icon-sm .glass-sm-front {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            top: 2px;
+            left: 2px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-icon-sm:hover .glass-sm-front {
+            top: 4px;
+            left: 4px;
+        }
+
+        html.light .glass-icon-sm .glass-sm-front {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .creative-card {
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .creative-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--text-primary);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.08);
+        }
+    
+        /* Estilos Swiper 3D HORIZONTAL */
+        .swiper-container {
+            width: 100%;
+            padding-top: 40px;
+            padding-bottom: 60px;
+            overflow: hidden;
+        }
+        .swiper-slide {
+            width: 85vw;
+            max-width: 600px;
+            aspect-ratio: 16/9;
+            border-radius: 16px;
+            background-color: #000;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .swiper-slide-active {
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .img-container {
+            position: absolute; inset: 0; z-index: 10;
+            transition: opacity 0.5s ease;
+        }
+        .img-container img {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.8; transition: transform 0.5s ease, opacity 0.3s ease;
+        }
+        .swiper-slide-active .img-container img {
+            opacity: 1; transform: scale(1.03);
+        }
+        
+        .video-container {
+            position: absolute; inset: 0; z-index: 5;
+            background: #000;
+        }
+
+        .card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 40%, transparent 100%);
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
+            pointer-events: none;
+        }
+        .play-icon-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0; transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .swiper-slide-active:hover .play-icon-overlay {
+            opacity: 1; transform: translate(-50%, -50%) scale(1.2);
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #fff !important;
+            background: rgba(0,0,0,0.6);
+            width: 50px !important; height: 50px !important;
+            border-radius: 50%; backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s ease;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: rgba(239, 68, 68, 0.9); transform: scale(1.15);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 20px !important; font-weight: bold;
+        }
+
+        /* --- CURSOR PERSONALIZADO Y EFECTOS --- */
+        body {
+            cursor: default;
+        }
+        a, button, input, textarea, [role="button"], .glass-switch, .swiper-slide {
+            cursor: pointer;
+        }
+        
+        #custom-cursor {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s ease-out, width 0.2s ease, height 0.2s ease;
+        }
+        
+        .cursor-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+        }
+        
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid rgba(255, 255, 255, 0.45);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, transform 0.1s ease-out;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+        }
+
+        html.light .cursor-dot {
+            background-color: #09090b;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+        html.light .cursor-ring {
+            border: 1.5px solid rgba(9, 9, 11, 0.35);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efecto Click / Ripple */
+        .click-ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(239,68,68,0.7) 0%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0) 70%);
+            transform: scale(0);
+            animation: ripple-effect 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            pointer-events: none;
+            z-index: 99997;
+        }
+
+        @keyframes ripple-effect {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4.5);
+                opacity: 0;
+            }
+        }
+
+        /* --- ESTILOS EXACTOS TIPO APPLE TV / NETFLIX COVER FLOW --- */
+        .netflix-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            background: transparent;
+            border-radius: 2rem;
+            padding: 4rem 1rem;
+            overflow: hidden;
+            border: none;
+            box-shadow: none;
+        }
+
+        .swiper-netflix {
+            width: 100%;
+            padding-top: 30px;
+            padding-bottom: 50px;
+            overflow: visible !important;
+        }
+
+        .swiper-netflix .swiper-slide {
+            width: 260px !important;
+            height: 380px !important;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #18181b;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            opacity: 0.5;
+            filter: brightness(0.5) blur(1px);
+            transform: scale(0.85);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .swiper-netflix .swiper-slide-active {
+            opacity: 1 !important;
+            filter: brightness(1) blur(0px) !important;
+            transform: scale(1.08) translateY(-6px) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            z-index: 50;
+        }
+
+        .swiper-netflix .swiper-slide-prev,
+        .swiper-netflix .swiper-slide-next {
+            opacity: 0.75;
+            filter: brightness(0.7) blur(0.5px);
+            transform: scale(0.9) translateY(0px);
+        }
+
+        .netflix-card-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            z-index: 10;
+        }
+    
+        /* Estilo y Animación de Botón Tipo Lusion (Pill Button con círculo deslizante sin flecha) */
+        .lusion-pill-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #ffffff;
+            color: #09090b;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            font-weight: 600;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+        }
+
+        html.light .lusion-pill-btn {
+            background-color: #09090b;
+            color: #ffffff;
+        }
+
+        .lusion-pill-btn .btn-circle {
+            width: 32px;
+            height: 32px;
+            background-color: #09090b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        html.light .lusion-pill-btn .btn-circle {
+            background-color: #ffffff;
+        }
+
+        .lusion-pill-btn .btn-circle i, .lusion-pill-btn .btn-circle span {
+            color: #ffffff;
+            font-size: 13px;
+            transition: transform 0.3s ease;
+        }
+
+        html.light .lusion-pill-btn .btn-circle i, html.light .lusion-pill-btn .btn-circle span {
+            color: #09090b;
+        }
+
+        .lusion-pill-btn .btn-text {
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .lusion-pill-btn:hover {
+            background-color: #18181b !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        html.light .lusion-pill-btn:hover {
+            background-color: #e4e4e7 !important;
+            color: #09090b !important;
+            border-color: rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .lusion-pill-btn:hover .btn-circle {
+            transform: scale(1.1);
+            background-color: #ef4444;
+        }
+
+        .lusion-pill-btn:hover .btn-circle i {
+            color: #ffffff !important;
+        }
+
+        /* --- ANIMACIONES DE ENTRADA AL HACER SCROLL (ESTILO LUSION) --- */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    
+        /* --- ESTILO DE FONDO AMBIENTE TIPO MESH GRADIENT DINÁMICO (PASTEL AURORA) --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(216, 180, 254, 0.25) 0%, transparent 35%),
+                radial-gradient(circle at 90% 80%, rgba(153, 246, 228, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(191, 219, 254, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(244, 114, 182, 0.15) 0%, transparent 30%);
+            animation: meshFlow 12s ease infinite alternate;
+            transition: background 0.5s ease;
+        }
+
+        @keyframes meshFlow {
+            0% {
+                background-position: 0% 0%;
+                filter: hue-rotate(0deg);
+            }
+            50% {
+                background-position: 100% 50%;
+                filter: hue-rotate(15deg);
+            }
+            100% {
+                background-position: 0% 100%;
+                filter: hue-rotate(0deg);
+            }
+        }
+
+        html.light body::before {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(216, 180, 254, 0.35) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(153, 246, 228, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(191, 219, 254, 0.25) 0%, transparent 55%),
+                radial-gradient(circle at 80% 20%, rgba(244, 114, 182, 0.2) 0%, transparent 35%);
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body class="min-h-screen">
+
+    <!-- Fondo decorativo con líneas y elementos geométricos flotantes -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-[-1] opacity-30 dark:opacity-25">
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full border border-blue-500/30"></div>
+        <div class="absolute bottom-10 right-10 w-[500px] h-[500px] rounded-full border border-purple-500/20"></div>
+        <svg class="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="70%" x2="40%" y2="70%" stroke="currentColor" stroke-width="1" class="text-blue-500/40" />
+            <path d="M 40% 70% Q 50% 70% 50% 85% T 60% 100%" fill="none" stroke="currentColor" stroke-width="1" class="text-blue-500/40" />
+        </svg>
+    </div>
+
+    <!-- Cursor Personalizado y Efectos -->
+    <div id="custom-cursor" class="cursor-dot hidden md:block"></div>
+    <div id="cursor-ring" class="cursor-ring hidden md:block"></div>
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 w-full z-50 custom-bg-secondary/90 backdrop-blur-md border-b custom-border transition-colors duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto pl-6 pr-3 md:pr-4 h-20 flex items-center justify-between">
+            <a href="#home" id="admin-logo-trigger" class="text-lg font-extrabold tracking-wider flex items-center gap-2 custom-text-primary" title="Haz triple clic aquí para activar/desactivar tu panel de admin">
+                <span class="w-3 h-3 rounded-full bg-white animate-pulse"></span>
+                <span>SEBASTIAN<span class="text-zinc-400 font-light">BA</span></span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm custom-text-secondary">
+                <a href="#home" class="hover:text-white transition">Inicio</a>
+                <a href="#about" class="hover:text-white transition">Perfil Ocupacional</a>
+                <a href="#portfolio" class="hover:text-white transition">Experiencias Significativas</a>
+                <a href="#portfolio-2" class="hover:text-white transition">Proyectos Creativos</a>
+                <a href="#instagram-feed" class="hover:text-white transition">Instagram</a>
+                <a href="#contact" class="hover:text-white transition">Contacto</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <!-- BOTÓN PRINCIPAL DE CV (DIRECTO Y FUNCIONAL PARA VISITANTES) -->
+                <a id="main-cv-button" href="https://drive.google.com/file/d/1C4ct76URd_GZwyPgEt5_RzWQtH_j7Uh2/view?usp=sharing" target="_blank" class="px-5 py-2 rounded-full bg-white text-black font-semibold text-xs transition shadow-md hover:bg-zinc-200 flex items-center gap-2 no-underline">
+                    <i class="fa-solid fa-id-card text-red-500 text-sm"></i>
+                    <span id="btn-cv-text">Ver CV</span>
+                </a>
+
+                <!-- PANEL DE ADMIN SECRETO (OCULTO PARA VISITANTES, APARECE CON TRIPLE CLIC EN EL LOGO) -->
+                <div id="admin-cv-panel" class="fixed top-24 right-6 z-50 custom-card-bg border custom-border rounded-2xl shadow-2xl p-4 w-72 hidden backdrop-blur-xl">
+                    <div class="flex items-center justify-between mb-3 pb-2 border-b custom-border">
+                        <span class="text-xs font-bold text-rose-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-lock-open"></i> Panel Admin (Privado)
+                        </span>
+                        <button onclick="toggleAdminPanel()" class="text-xs text-zinc-400 hover:text-white font-bold px-2 py-0.5 rounded bg-zinc-800">✕ Cerrar</button>
+                    </div>
+                    <p class="text-[11px] custom-text-secondary mb-3">Elige qué enfoque de CV verán los visitantes en tu página web:</p>
+                    <div class="space-y-2">
+                        <button onclick="setPublicCV('comunicaciones')" class="w-full text-left px-3 py-2 rounded-xl text-xs custom-text-primary hover:bg-zinc-500/20 transition flex items-center justify-between border custom-border">
+                            <span>🗣️ Enfoque Comunicaciones</span>
+                            <span id="admin-check-coms" class="text-red-500 font-bold">✓</span>
+                        </button>
+                        <button onclick="setPublicCV('pedagogia')" class="w-full text-left px-3 py-2 rounded-xl text-xs custom-text-primary hover:bg-zinc-500/20 transition flex items-center justify-between border custom-border">
+                            <span>📚 Enfoque Pedagogía</span>
+                            <span id="admin-check-ped" class="text-zinc-500 hidden">✓</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- INTERRUPTOR TEMA -->
+                <div id="theme-toggle" class="glass-switch" title="Cambiar Tema" role="button" aria-label="Cambiar Tema">
+                    <div id="glass-handle" class="glass-handle">
+                        <i id="handle-icon" class="fa-solid fa-moon text-white text-[11px]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-32 pb-20 md:pt-44 md:pb-32 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="flex-1 space-y-6 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800/40 border custom-border custom-text-secondary text-xs font-semibold uppercase tracking-wider">
+                <i class="fa-solid fa-sparkles text-white"></i> <span id="profile-tagline">Comunicador Social & Creador Visual</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight custom-text-primary">
+                Transformo ideas en <span class="underline decoration-white decoration-2 underline-offset-8">arte y sonido</span>.
+            </h1>
+            <p id="profile-description" class="text-lg custom-text-secondary max-w-xl mx-auto md:mx-0 font-light leading-relaxed text-justify">
+                Experto en producción audiovisual, diseño gráfico, sonido y pedagogía social. Creando narrativas que dejan huella en la frontera y el mundo.
+            </p>
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                <a href="#portfolio" class="lusion-pill-btn">
+                    <span class="btn-circle"><i class="fa-solid fa-arrow-down"></i></span>
+                    <span class="btn-text">EXPLORAR PERFIL</span>
+                </a>
+                <div class="flex items-center gap-3 px-2">
+                    <a href="https://www.youtube.com/@SawBeat-54" target="_blank" class="glass-icon-sm" title="YouTube" aria-label="YouTube">
+                        <div class="glass-sm-back bg-rose-500/60"></div>
+                        <div class="glass-sm-front"><i class="fa-brands fa-youtube text-rose-300 text-base"></i></div>
+                    </a>
+                    <a href="https://instagram.com/sebastianba6" target="_blank" class="glass-icon-sm" title="Instagram" aria-label="Instagram">
+                        <div class="glass-sm-back bg-purple-500/60"></div>
+                        <div class="glass-sm-front"><i class="fa-brands fa-instagram text-purple-300 text-base"></i></div>
+                    </a>
+                    <a href="mailto:Sebastianbonillaangarita@gmail.com" class="glass-icon-sm" title="Correo" aria-label="Correo electrónico">
+                        <div class="glass-sm-back bg-amber-500/60"></div>
+                        <div class="glass-sm-front"><i class="fa-solid fa-envelope text-amber-300 text-base"></i></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOTO DE PERFIL -->
+        <div class="flex-1 relative flex justify-center">
+            <div class="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-zinc-700 to-zinc-900 p-1.5 shadow-2xl shadow-zinc-500/20">
+                <div class="w-full h-full rounded-full overflow-hidden custom-card-bg flex items-center justify-center border custom-border relative">
+                    <img src="img/mi-foto.jpg" alt="Sebastian Bonilla Angarita" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ / PERFIL OCUPACIONAL -->
+    <section id="about" class="py-20 custom-bg-secondary border-y custom-border">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl md:text-4xl font-extrabold custom-text-primary">Perfil Ocupacional</h2>
+                <p class="custom-text-secondary leading-relaxed font-light text-justify">
+                    Comunicador social y pedagogo integral con sólida trayectoria en producción audiovisual, sonora, diseño gráfico y comunicación digital aplicada a procesos de transformación social y educación. Especializado en el diseño de estrategias educomunicativas y narrativas artísticas (música, radio, video y medios digitales) orientadas a fortalecer el liderazgo de niños, niñas, adolescentes y jóvenes.
+                </p>
+                <p class="custom-text-secondary leading-relaxed font-light text-justify">
+                    Destaco por mi capacidad para integrar la música y el arte como herramientas de reconciliación, memoria e integración comunitaria en contextos de frontera. Con competencias avanzadas en branding, storytelling visual y gestión de proyectos culturales, busco potenciar tanto la identidad de organizaciones como el desarrollo de proyectos de vida significativos en las comunidades, promoviendo entornos participativos, inclusivos y resilientes.
+                </p>
+                <div class="pt-2 max-w-sm">
+                    <div class="p-6 rounded-2xl custom-card-bg border custom-border creative-card flex items-center gap-5">
+                        <div class="glass-icon-sm">
+                            <div class="glass-sm-back bg-emerald-500/60"></div>
+                            <div class="glass-sm-front"><i class="fa-solid fa-award text-emerald-300"></i></div>
+                        </div>
+                        <div>
+                            <h4 class="custom-text-primary font-black text-2xl">+10 Años</h4>
+                            <p class="text-xs custom-text-secondary mt-0.5 font-medium">Medios & Educación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold custom-text-primary">Habilidades & Software Creativo</h3>
+                <div class="space-y-6" id="skills-container">
+                    <div>
+                        <div class="flex justify-between text-sm mb-2 font-semibold custom-text-primary">
+                            <span>Producción Audiovisual (Premiere, After Effects, Final Cut)</span>
+                            <span class="font-bold text-rose-500 skill-counter" data-target="95">0%</span>
+                        </div>
+                        <div class="w-full bg-zinc-700/40 border custom-border h-3.5 rounded-full overflow-hidden p-0.5">
+                            <div class="skill-bar bg-gradient-to-r from-rose-500 to-amber-500 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-2 font-semibold custom-text-primary">
+                            <span>Diseño Gráfico (Illustrator, Photoshop, CorelDRAW)</span>
+                            <span class="font-bold text-rose-500 skill-counter" data-target="90">0%</span>
+                        </div>
+                        <div class="w-full bg-zinc-700/40 border custom-border h-3.5 rounded-full overflow-hidden p-0.5">
+                            <div class="skill-bar bg-gradient-to-r from-rose-500 to-amber-500 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-2 font-semibold custom-text-primary">
+                            <span>Producción Radial y Sonora (Ableton Live, Audition)</span>
+                            <span class="font-bold text-rose-500 skill-counter" data-target="92">0%</span>
+                        </div>
+                        <div class="w-full bg-zinc-700/40 border custom-border h-3.5 rounded-full overflow-hidden p-0.5">
+                            <div class="skill-bar bg-gradient-to-r from-rose-500 to-amber-500 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%" data-width="92%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const skillsSection = document.getElementById("skills-container");
+                    let animated = false;
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && !animated) {
+                                animated = true;
+                                document.querySelectorAll('.skill-bar').forEach(bar => {
+                                    const targetWidth = bar.getAttribute('data-width');
+                                    bar.style.width = targetWidth + '%';
+                                });
+
+                                document.querySelectorAll('.skill-counter').forEach(counter => {
+                                    const target = +counter.getAttribute('data-target');
+                                    let count = 0;
+                                    const speed = 20;
+                                    const updateCount = () => {
+                                        count += 2;
+                                        if (count < target) {
+                                            counter.innerText = count + '%';
+                                            setTimeout(updateCount, speed);
+                                        } else {
+                                            counter.innerText = target + '%';
+                                        }
+                                    };
+                                    updateCount();
+                                });
+                            }
+                        });
+                    }, { threshold: 0.3 });
+
+                    if (skillsSection) {
+                        observer.observe(skillsSection);
+                    }
+                });
+            </script>
+        </div>
+    </section>
+
+    <!-- EXPERIENCIAS SIGNIFICATIVAS -->
+    <section id="portfolio" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold custom-text-primary">Experiencias Significativas</h2>
+            <p class="custom-text-secondary font-light text-justify md:text-center">Labor social, laboratorios musicales y trayectoria publicitaria.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Proyecto 1 -->
+            <a href="https://www.youtube.com/watch?v=5x8OwWOi_7k" target="_blank" class="rounded-3xl custom-card-bg border custom-border creative-card p-6 space-y-4 flex flex-col justify-between group block">
+                <div>
+                    <div class="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border custom-border shadow-md">
+                        <img src="https://img.youtube.com/vi/5x8OwWOi_7k/hqdefault.jpg" alt="Dos Banderas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white text-lg shadow-lg">
+                                <i class="fa-solid fa-play ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-bold text-white">2024 - 2025</span>
+                    </div>
+
+                    <span class="text-xs custom-text-secondary font-bold uppercase tracking-wider">Corporación CIDEMOS / Ciudades Sin Borde</span>
+                    <h3 class="text-xl font-bold custom-text-primary mt-1 group-hover:text-red-500 transition">Tallerista de Música & Pedagogía</h3>
+                    <p class="custom-text-secondary text-sm font-light mt-2 leading-relaxed text-justify">
+                        Proceso pedagógico y musical desarrollado junto a jóvenes y adolescentes en la frontera. Una experiencia artística enfocada en fomentar la resiliencia, la integración comunitaria y la hermandad a través del arte.
+                    </p>
+                </div>
+                <div class="pt-4 border-t custom-border flex items-center justify-between text-xs custom-text-secondary">
+                    <span>Villa del Rosario & Frontera</span>
+                    <span class="font-semibold text-red-500 flex items-center gap-1">Ver en YouTube <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
+                </div>
+            </a>
+
+            <!-- Proyecto 2 -->
+            <a href="https://www.youtube.com/watch?v=UIpu1Eunres" target="_blank" class="rounded-3xl custom-card-bg border custom-border creative-card p-6 space-y-4 flex flex-col justify-between group block">
+                <div>
+                    <div class="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border custom-border shadow-md">
+                        <img src="https://img.youtube.com/vi/UIpu1Eunres/hqdefault.jpg" alt="Juventudes Tejiendo Redes" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white text-lg shadow-lg">
+                                <i class="fa-solid fa-play ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-bold text-white">Estrategia Educomunicativa</span>
+                    </div>
+
+                    <span class="text-xs custom-text-secondary font-bold uppercase tracking-wider">Juventudes Tejiendo Redes</span>
+                    <h3 class="text-xl font-bold custom-text-primary mt-1 group-hover:text-red-500 transition">Comunicador & Pedagogo Social</h3>
+                    <p class="custom-text-secondary text-sm font-light mt-2 leading-relaxed text-justify">
+                        Como comunicador y pedagogo, integré la música y el arte como ejes centrales para construir una estrategia educomunicativa orientada a la prevención de VBG, fortaleciendo el liderazgo juvenil en los barrios El Talento, Alfonso Gómez y La Fortaleza.
+                    </p>
+                </div>
+                <div class="pt-4 border-t custom-border flex items-center justify-between text-xs custom-text-secondary">
+                    <span>Barrios Cúcuta</span>
+                    <span class="font-semibold text-red-500 flex items-center gap-1">Ver en YouTube <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
+                </div>
+            </a>
+
+            <!-- Proyecto 3 -->
+            <a href="https://www.youtube.com/watch?v=m8D0Fpa_oPA" target="_blank" class="rounded-3xl custom-card-bg border custom-border creative-card p-6 space-y-4 flex flex-col justify-between group block">
+                <div>
+                    <div class="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border custom-border shadow-md">
+                        <img src="https://img.youtube.com/vi/m8D0Fpa_oPA/hqdefault.jpg" alt="Escuela KAIRÓS" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white text-lg shadow-lg">
+                                <i class="fa-solid fa-play ml-0.5"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-bold text-white">Escuela KAIRÓS</span>
+                    </div>
+
+                    <span class="text-xs custom-text-secondary font-bold uppercase tracking-wider">Fundación El Pilar / UNICEF Colombia</span>
+                    <h3 class="text-xl font-bold custom-text-primary mt-1 group-hover:text-red-500 transition">Pedagogo - Escuela KAIRÓS</h3>
+                    <p class="custom-text-secondary text-sm font-light mt-2 leading-relaxed text-justify">
+                        Como pedagogo en la Escuela KAIRÓS, guié la composición colectiva de más de 165 niños y adolescentes de Cuberos Niño y La Fortaleza en torno a la libertad de expresión, la música como lenguaje de integración y el uso seguro de redes sociales.
+                    </p>
+                </div>
+                <div class="pt-4 border-t custom-border flex items-center justify-between text-xs custom-text-secondary">
+                    <span>Cuberos Niño & La Fortaleza</span>
+                    <span class="font-semibold text-red-500 flex items-center gap-1">Ver en YouTube <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- BANNER CREATIVO / TECH STACK & MARQUEE -->
+    <section class="py-16 custom-bg-secondary border-y custom-border overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+            <p class="text-xs uppercase tracking-widest custom-text-secondary font-bold">Tecnologías, Herramientas & Ecosistema Creativo</p>
+        </div>
+        <div class="relative w-full flex overflow-x-hidden group">
+            <div class="flex animate-marquee whitespace-nowrap gap-8 items-center py-4">
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-video text-rose-500 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Adobe Premiere Pro</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-microphone-lines text-amber-500 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Ableton Live 12</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-pen-nib text-purple-500 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Adobe Illustrator</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-code text-blue-500 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Visual Studio Code</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-camera text-emerald-500 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Insta360 & Sony</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-sliders text-rose-400 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Serato DJ Pro</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-palette text-amber-400 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Figma & CorelDRAW</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-2xl custom-card-bg border custom-border shadow-md">
+                    <i class="fa-solid fa-compact-disc text-purple-400 text-lg"></i>
+                    <span class="text-sm font-semibold custom-text-primary">Akai MPC & Zoom B1X</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+
+    <!-- PROYECTOS CREATIVOS & CANALES -->
+    <section id="portfolio-2" class="py-20 px-4 md:px-6 max-w-7xl mx-auto my-24 overflow-hidden relative">
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <h2 class="text-3xl md:text-5xl font-extrabold custom-text-primary">Proyectos Creativos & Canales</h2>
+            <p class="custom-text-secondary font-light">Explora mis producciones musicales y episodios de podcast con una experiencia flotante y envolvente.</p>
+            
+            <!-- PESTAÑAS -->
+            <div class="flex justify-center gap-4 pt-4 flex-wrap">
+                <button onclick="switchTab('sawbeat')" id="tab-sawbeat" class="lusion-pill-btn">
+                    <span class="btn-circle"><i class="fa-solid fa-headphones text-red-500"></i></span>
+                    <span class="btn-text">SawBeat (@SawBeat-54)</span>
+                </button>
+                <button onclick="switchTab('hablamedearte')" id="tab-hablamedearte" class="lusion-pill-btn" style="background-color: #27272a; color: #ffffff;">
+                    <span class="btn-circle" style="background-color: #18181b;"><i class="fa-solid fa-microphone text-rose-500"></i></span>
+                    <span class="btn-text">Háblame de Arte (@Hablamedearte)</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="netflix-carousel-wrapper">
+            <div class="relative w-full z-10">
+                <!-- PESTAÑA 1: SAWBEAT -->
+                <div id="content-sawbeat" class="block transition-opacity duration-500 opacity-100">
+                    <div class="swiper-container swiper-sawbeat relative">
+                        <div class="swiper-wrapper">
+                            <a href="https://www.youtube.com/watch?v=L5QyN93b9aY" target="_blank" class="swiper-slide horizontal-card block" data-video-id="L5QyN93b9aY">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/L5QyN93b9aY/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/L5QyN93b9aY/hqdefault.jpg'" alt="SAWBEAT XVI">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">MIX</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">SAWBEAT XVI Groove Mix</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=kTh5QAwVwwM" target="_blank" class="swiper-slide horizontal-card block" data-video-id="kTh5QAwVwwM">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/kTh5QAwVwwM/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/kTh5QAwVwwM/hqdefault.jpg'" alt="SAWBEAT XV">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">MIX</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">SAWBEAT XV - Old Dance</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=D9CTsKw5HjQ" target="_blank" class="swiper-slide horizontal-card block" data-video-id="D9CTsKw5HjQ">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/D9CTsKw5HjQ/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/D9CTsKw5HjQ/hqdefault.jpg'" alt="SAWBEAT XIV">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">MIX</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">SAWBEAT XIV - Chill Vibes</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=5tWwzJaztyw" target="_blank" class="swiper-slide horizontal-card block" data-video-id="5tWwzJaztyw">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/5tWwzJaztyw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/5tWwzJaztyw/hqdefault.jpg'" alt="SAWBEAT XIII">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">MIX</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">SAWBEAT XIII - Chill Jazz</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=VJ2hLSLIfKU" target="_blank" class="swiper-slide horizontal-card block" data-video-id="VJ2hLSLIfKU">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/VJ2hLSLIfKU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/VJ2hLSLIfKU/hqdefault.jpg'" alt="SAWBEAT VI">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">MIX</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">SAWBEAT VI - Chill Groove</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-button-next sb-next"></div>
+                        <div class="swiper-button-prev sb-prev"></div>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA 2: HÁBLAME DE ARTE -->
+                <div id="content-hablamedearte" class="hidden transition-opacity duration-500 opacity-0">
+                    <div class="swiper-container swiper-habla relative">
+                        <div class="swiper-wrapper">
+                            <a href="https://www.youtube.com/watch?v=d8fTpCiS0lg" target="_blank" class="swiper-slide horizontal-card block" data-video-id="d8fTpCiS0lg">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/d8fTpCiS0lg/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/d8fTpCiS0lg/hqdefault.jpg'" alt="Episodio 18">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">PODCAST</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">Episodio #18 - El Amor por el Arte y la Disciplina como Resistencia</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=GYeBlZVydYU" target="_blank" class="swiper-slide horizontal-card block" data-video-id="GYeBlZVydYU">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/GYeBlZVydYU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/GYeBlZVydYU/hqdefault.jpg'" alt="Episodio 17">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">PODCAST</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">Episodio #17 - Las Diferentes Miradas del Arte</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=jmHDM_nk5Ho" target="_blank" class="swiper-slide horizontal-card block" data-video-id="jmHDM_nk5Ho">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/jmHDM_nk5Ho/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/jmHDM_nk5Ho/hqdefault.jpg'" alt="Episodio 14">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">PODCAST</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">Episodio #14 - Nueva Temporada</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=M4-h5Euj-mk" target="_blank" class="swiper-slide horizontal-card block" data-video-id="M4-h5Euj-mk">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/M4-h5Euj-mk/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/M4-h5Euj-mk/hqdefault.jpg'" alt="Episodio 5">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">PODCAST</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">Episodio #5 - El Arte y la Psicología</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=TNlWB5DSBhY" target="_blank" class="swiper-slide horizontal-card block" data-video-id="TNlWB5DSBhY">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/TNlWB5DSBhY/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/TNlWB5DSBhY/hqdefault.jpg'" alt="EL RIO SUENA">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">ESPECIAL</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">EL RÍO SUENA - Bochalema</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=E5N65rKLKGE" target="_blank" class="swiper-slide horizontal-card block" data-video-id="E5N65rKLKGE">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/E5N65rKLKGE/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/E5N65rKLKGE/hqdefault.jpg'" alt="Episodio 7">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">PODCAST</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">Episodio #7 - El Arte de Crear Contenido</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=49Sq6CrjMZw" target="_blank" class="swiper-slide horizontal-card block" data-video-id="49Sq6CrjMZw">
+                                <div class="video-container"></div>
+                                <div class="img-container">
+                                    <img src="https://img.youtube.com/vi/49Sq6CrjMZw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/49Sq6CrjMZw/hqdefault.jpg'" alt="Episodio 6">
+                                    <div class="play-icon-overlay"><i class="fa-solid fa-circle-play text-6xl text-rose-500 drop-shadow-xl"></i></div>
+                                    <div class="card-overlay">
+                                        <span class="bg-rose-600 text-white w-max text-xs font-bold px-2 py-1 rounded mb-2">PODCAST</span>
+                                        <h4 class="text-white text-xl md:text-2xl font-bold leading-tight">Episodio #6 - Arte Textil</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-button-next ha-next"></div>
+                        <div class="swiper-button-prev ha-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM / COVER FLOW SECTION -->
+    <section id="instagram-feed" class="py-20 px-4 md:px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <h2 class="text-3xl md:text-5xl font-extrabold custom-text-primary">Contenido Destacado & Reels</h2>
+            <p class="custom-text-secondary font-light">Explora mis publicaciones y reels con la experiencia visual flotante y envolvente de Cover Flow.</p>
+        </div>
+
+        <!-- PERFIL RESUMEN BAR -->
+        <div class="custom-card-bg border custom-border rounded-3xl p-6 md:p-8 shadow-2xl mb-14 backdrop-blur-xl flex flex-col md:flex-row items-center justify-between gap-6 max-w-5xl mx-auto">
+            <div class="flex items-center gap-5">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 shrink-0 shadow-lg">
+                    <img src="img/mi-foto.jpg" alt="sebastianba6" class="w-full h-full object-cover rounded-full border-2 border-black">
+                </div>
+                <div>
+                    <h4 class="font-bold text-base md:text-lg custom-text-primary flex items-center gap-2">
+                        sebastianba6 <i class="fa-solid fa-circle-check text-blue-500 text-sm"></i>
+                    </h4>
+                    <p class="text-xs custom-text-secondary">311 publicaciones • 1,181 seguidores • 1,084 seguidos</p>
+                    <p class="text-[11px] custom-text-secondary font-light mt-0.5">Realidad Intuitiva 👁️ • Cúcuta, Colombia</p>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/sebastianba6/?hl=es-la" target="_blank" class="px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-bold text-xs shadow-xl hover:opacity-95 transition flex items-center gap-2 shrink-0">
+                <i class="fa-brands fa-instagram text-base"></i> Ver Perfil en Instagram
+            </a>
+        </div>
+
+        <div class="netflix-carousel-wrapper">
+            <div class="swiper-container swiper-netflix relative">
+                <div class="swiper-wrapper items-center">
+                    <a href="https://www.instagram.com/reel/DdU3z5dBP0y/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DdU3z5dBP0y/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #1</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Realidad Intuitiva & Arte</h4>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/reel/DXttGDsjidu/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DXttGDsjidu/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #2</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Exploración & Creatividad</h4>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/reel/DSLgdJzj9Zb/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DSLgdJzj9Zb/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #3</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Proceso & Sonido</h4>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/reel/DHkFUH0OaWD/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DHkFUH0OaWD/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #4</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Momentos Visuales</h4>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/reel/DPOhYwVDoQm/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DPOhYwVDoQm/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #5</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Arte en Movimiento</h4>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/reel/DOYwpaYjioV/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DOYwpaYjioV/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #6</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Sesión & Groove</h4>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/reel/DKvG256OAcf/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DKvG256OAcf/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #7</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Perspectiva Urbana</h4>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/reel/DGlZCItu-LG/" target="_blank" class="swiper-slide netflix-card relative group flex items-center justify-center bg-zinc-900 border border-zinc-800 overflow-hidden block">
+                        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                            <iframe src="https://www.instagram.com/reel/DGlZCItu-LG/embed/?autoplay=1&muted=1" 
+                                    width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" 
+                                    class="w-full h-full object-cover pointer-events-none" 
+                                    style="transform: scale(2.1); transform-origin: center center;"
+                                    allow="autoplay"></iframe>
+                        </div>
+
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/20 to-transparent transition-opacity duration-300">
+                            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-xl z-20">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest font-bold mb-1">Reel Destacado #8</span>
+                            <h4 class="text-white text-sm font-bold leading-snug">Instantes Creativos</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="swiper-button-next netflix-next"></div>
+                <div class="swiper-button-prev netflix-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contact" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold custom-text-primary">Ponte en Contacto</h2>
+            <p class="custom-text-secondary font-light">¿Listo para colaborar en tu próximo proyecto audiovisual o creativo?</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <div class="flex items-center gap-5">
+                    <div class="glass-icon-sm">
+                        <div class="glass-sm-back bg-amber-500/60"></div>
+                        <div class="glass-sm-front"><i class="fa-solid fa-envelope text-amber-300"></i></div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg custom-text-primary">Correo Electrónico</h4>
+                        <p class="custom-text-secondary text-sm">Sebastianbonillaangarita@gmail.com</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-5">
+                    <div class="glass-icon-sm">
+                        <div class="glass-sm-back bg-emerald-500/60"></div>
+                        <div class="glass-sm-front"><i class="fa-solid fa-phone text-emerald-300"></i></div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg custom-text-primary">Teléfono / WhatsApp</h4>
+                        <p class="custom-text-secondary text-sm">+57 323 208 4545</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-5">
+                    <div class="glass-icon-sm">
+                        <div class="glass-sm-back bg-rose-500/60"></div>
+                        <div class="glass-sm-front"><i class="fa-solid fa-location-dot text-rose-300"></i></div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg custom-text-primary">Ubicación</h4>
+                        <p class="custom-text-secondary text-sm">Cúcuta, Norte de Santander, Colombia</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="space-y-4 custom-card-bg p-8 rounded-3xl border custom-border shadow-xl" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Sebastian se pondrá en contacto contigo pronto.');">
+                <div>
+                    <label class="block text-sm font-medium mb-2 custom-text-primary">Tu Nombre</label>
+                    <input type="text" required class="w-full custom-card-bg border custom-border rounded-2xl px-4 py-3 text-sm custom-text-primary focus:outline-none focus:border-white transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2 custom-text-primary">Tu Correo</label>
+                    <input type="email" required class="w-full custom-card-bg border custom-border rounded-2xl px-4 py-3 text-sm custom-text-primary focus:outline-none focus:border-white transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2 custom-text-primary">Mensaje</label>
+                    <textarea rows="4" required class="w-full custom-card-bg border custom-border rounded-2xl px-4 py-3 text-sm custom-text-primary focus:outline-none focus:border-white transition"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-2xl bg-white text-black hover:bg-zinc-200 font-bold transition shadow-lg">
+                    Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 custom-bg-secondary border-t custom-border text-center text-xs custom-text-secondary font-light">
+        <p>&copy; 2026 Sebastian Bonilla Angarita. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- BOTÓN WHATSAPP -->
+    <a href="https://wa.me/573232084545?text=Hola%20Sebastian,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte%20para%20un%20proyecto." 
+       target="_blank" 
+       class="fixed bottom-8 right-8 z-50 flex items-center justify-center w-16 h-16 group transition-transform duration-300 hover:scale-110"
+       title="Escríbeme por WhatsApp"
+       aria-label="Escríbeme por WhatsApp">
+        <div class="absolute w-12 h-12 rounded-2xl bg-emerald-500/70 bottom-1 right-1 shadow-xl shadow-emerald-500/30 backdrop-blur-md transition-all duration-300 group-hover:bg-emerald-400"></div>
+        <div class="absolute w-12 h-12 rounded-2xl top-1 left-1 bg-white/15 border border-white/35 backdrop-blur-md shadow-lg flex items-center justify-center z-10">
+            <i class="fa-brands fa-whatsapp text-2xl text-emerald-300 group-hover:text-white transition-colors"></i>
+        </div>
+        <span class="absolute right-20 bg-zinc-900 text-white text-xs font-medium px-3.5 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border custom-border pointer-events-none shadow-2xl">
+            ¡Escríbeme por WhatsApp!
+        </span>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const linksCV = {
+            comunicaciones: "https://drive.google.com/file/d/1C4ct76URd_GZwyPgEt5_RzWQtH_j7Uh2/view?usp=sharing",
+            pedagogia: "https://drive.google.com/file/d/1J8oBq1L-5qu-k8qJTCg9roIws3jYujIW/view?usp=sharing"
+        };
+
+        // Inicializar el CV guardado o por defecto
+        function initCV() {
+            const saved = localStorage.getItem('public_cv_choice') || 'comunicaciones';
+            applyCVChoice(saved, false);
+        }
+
+        function setPublicCV(tipo) {
+            applyCVChoice(tipo, true);
+            alert(`✅ ¡CV público actualizado a: ${tipo.toUpperCase()}! Ahora los visitantes abrirán este enfoque.`);
+        }
+
+        function applyCVChoice(tipo, save) {
+            const mainButton = document.getElementById('main-cv-button');
+            const checkComs = document.getElementById('admin-check-coms');
+            const checkPed = document.getElementById('admin-check-ped');
+            const tagline = document.getElementById('profile-tagline');
+
+            if (tipo === 'comunicaciones') {
+                if (mainButton) mainButton.href = linksCV.comunicaciones;
+                if (tagline) tagline.innerText = "Comunicador Social & Creador Visual";
+                if (checkComs) { checkComs.classList.remove('hidden'); checkComs.className = "text-red-500 font-bold"; }
+                if (checkPed) { checkPed.classList.add('hidden'); }
+                if (save) localStorage.setItem('public_cv_choice', 'comunicaciones');
+            } else {
+                if (mainButton) mainButton.href = linksCV.pedagogia;
+                if (tagline) tagline.innerText = "Educador, Pedagogo & Creador Creativo";
+                if (checkComs) { checkComs.classList.add('hidden'); }
+                if (checkPed) { checkPed.classList.remove('hidden'); checkPed.className = "text-red-500 font-bold"; }
+                if (save) localStorage.setItem('public_cv_choice', 'pedagogia');
+            }
+        }
+
+        initCV();
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const handleIcon = document.getElementById('handle-icon');
+
+        function updateSwitch() {
+            if (htmlElement.classList.contains('light')) {
+                handleIcon.className = "fa-solid fa-sun text-amber-500 text-[11px]";
+            } else {
+                handleIcon.className = "fa-solid fa-moon text-white text-[11px]";
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'light') {
+            htmlElement.classList.add('light');
+            htmlElement.classList.remove('dark');
+        } else {
+            htmlElement.classList.add('dark');
+            htmlElement.classList.remove('light');
+        }
+        updateSwitch();
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('light')) {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            }
+            updateSwitch();
+        });
+
+        const swiperConfig = {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            observer: true,
+            observeParents: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            coverflowEffect: {
+                rotate: 5,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            }
+        };
+
+        const swiperSawbeat = new Swiper(".swiper-sawbeat", {
+            ...swiperConfig,
+            navigation: { nextEl: ".sb-next", prevEl: ".sb-prev" },
+        });
+
+        const swiperHabla = new Swiper(".swiper-habla", {
+            ...swiperConfig,
+            navigation: { nextEl: ".ha-next", prevEl: ".ha-prev" },
+        });
+
+        const swiperNetflix = new Swiper(".swiper-netflix", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            speed: 600,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 120,
+                modifier: 2.5,
+                slideShadows: false,
+            },
+            navigation: {
+                nextEl: ".netflix-next",
+                prevEl: ".netflix-prev",
+            }
+        });
+
+        document.querySelectorAll('.horizontal-card').forEach(card => {
+            let timeoutId;
+            card.addEventListener('mouseenter', () => {
+                if (card.closest('.swiper-sawbeat')) swiperSawbeat.autoplay.stop();
+                if (card.closest('.swiper-habla')) swiperHabla.autoplay.stop();
+
+                timeoutId = setTimeout(() => {
+                    const videoId = card.getAttribute('data-video-id');
+                    const videoContainer = card.querySelector('.video-container');
+                    const imgContainer = card.querySelector('.img-container');
+                    
+                    if (videoId && videoContainer && !videoContainer.innerHTML) {
+                        videoContainer.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}" frameborder="0" allow="autoplay; encrypted-media" style="pointer-events: none; width: 100%; height: 100%; border-radius: 16px;" title="YouTube video preview"></iframe>`;
+                    }
+                    if (imgContainer) imgContainer.style.opacity = '0';
+                }, 400);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (card.closest('.swiper-sawbeat')) swiperSawbeat.autoplay.start();
+                if (card.closest('.swiper-habla')) swiperHabla.autoplay.start();
+
+                clearTimeout(timeoutId);
+                const imgContainer = card.querySelector('.img-container');
+                const videoContainer = card.querySelector('.video-container');
+                
+                if (imgContainer) imgContainer.style.opacity = '1';
+                setTimeout(() => {
+                    if (videoContainer) videoContainer.innerHTML = '';
+                }, 400);
+            });
+        });
+
+        function switchTab(canal) {
+            const tabSawbeat = document.getElementById('tab-sawbeat');
+            const tabHabla = document.getElementById('tab-hablamedearte');
+            const contentSawbeat = document.getElementById('content-sawbeat');
+            const contentHabla = document.getElementById('content-hablamedearte');
+
+            if (canal === 'sawbeat') {
+                tabSawbeat.className = "lusion-pill-btn shadow-xl scale-105 ring-4 ring-rose-500/20";
+                tabHabla.style.backgroundColor = "#27272a";
+                tabHabla.style.color = "#ffffff";
+                
+                contentHabla.style.opacity = '0';
+                contentHabla.style.transform = 'translateY(15px) scale(0.98)';
+                
+                setTimeout(() => {
+                    contentHabla.classList.add('hidden');
+                    contentSawbeat.classList.remove('hidden');
+                    contentSawbeat.style.opacity = '1';
+                    contentSawbeat.style.transform = 'translateY(0) scale(1)';
+                    swiperSawbeat.update();
+                }, 200);
+
+            } else {
+                tabHabla.className = "lusion-pill-btn shadow-xl scale-105 ring-4 ring-rose-500/20";
+                tabSawbeat.style.backgroundColor = "#27272a";
+                tabSawbeat.style.color = "#ffffff";
+                
+                contentSawbeat.style.opacity = '0';
+                contentSawbeat.style.transform = 'translateY(15px) scale(0.98)';
+                
+                setTimeout(() => {
+                    contentSawbeat.classList.add('hidden');
+                    contentHabla.classList.remove('hidden');
+                    contentHabla.style.opacity = '1';
+                    contentHabla.style.transform = 'translateY(0) scale(1)';
+                    swiperHabla.update();
+                }, 200);
+            }
+        }
+
+        const cursorDot = document.getElementById('custom-cursor');
+        const cursorRing = document.getElementById('cursor-ring');
+        
+        let mouseX = -100, mouseY = -100;
+        let ringX = -100, ringY = -100;
+        
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+        });
+
+        function renderCursor() {
+            ringX += (mouseX - ringX) * 0.25;
+            ringY += (mouseY - ringY) * 0.25;
+            cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+            requestAnimationFrame(renderCursor);
+        }
+        requestAnimationFrame(renderCursor);
+
+        document.querySelectorAll('a, button, .glass-switch, .swiper-slide, input, textarea, [role="button"]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.width = '56px';
+                cursorRing.style.height = '56px';
+                cursorRing.style.borderColor = 'rgba(239, 68, 68, 0.85)';
+                cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%) scale(1.4)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.width = '38px';
+                cursorRing.style.height = '38px';
+                cursorRing.style.borderColor = '';
+                cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%) scale(1)`;
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'click-ripple';
+            ripple.style.left = `${e.clientX}px`;
+            ripple.style.top = `${e.clientY}px`;
+            ripple.style.width = '60px';
+            ripple.style.height = '60px';
+            ripple.style.marginLeft = '-30px';
+            ripple.style.marginTop = '-30px';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => { ripple.remove(); }, 650);
+        });
+
+        // --- SISTEMA DE TRIPLE CLIC PARA ABRIR PANEL DE ADMIN ---
+        const adminPanel = document.getElementById('admin-cv-panel');
+        const logoTrigger = document.getElementById('admin-logo-trigger');
+
+        function toggleAdminPanel() {
+            if (adminPanel) adminPanel.classList.toggle('hidden');
+        }
+
+        if (logoTrigger) {
+            let clickCount = 0;
+            let clickTimer = null;
+            logoTrigger.addEventListener('click', (e) => {
+                clickCount++;
+                if (clickCount === 1) {
+                    clickTimer = setTimeout(() => { clickCount = 0; }, 400);
+                } else if (clickCount === 3) {
+                    clearTimeout(clickTimer);
+                    clickCount = 0;
+                    e.preventDefault();
+                    toggleAdminPanel();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
